@@ -14,7 +14,7 @@ To regenerate src/Web3Methods.php and src/Web3Interface.php run
 composer run-script generate-methods
 ```
 
-
+ 
 **Complex Data types**
 are generated  ethereum-schema->objects.
 

@@ -1,10 +1,16 @@
 {
-  "name": "digitaldonkey/ethereum-php",
+  "name": "katuscak/ethereum-php",
   "description": "A library integrating Ethereum with typed PHP.",
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/MichalKatuscak/guzzle-jsonrpc"
+    }
+  ],
   "require": {
     "php": ">=7.1",
     "ext-json": "*",
-    "graze/guzzle-jsonrpc": "~3.0",
+    "katuscak/guzzle-jsonrpc": "dev-master",
     "pear/math_biginteger": "^1.0",
     "kornrunner/keccak": "^1.0",
     "digitaldonkey/ecverify":"1.0"
@@ -26,6 +32,7 @@
       "Ethereum\\": "src/"
     }
   },
+
   "license": "MIT",
   "authors": [
     {

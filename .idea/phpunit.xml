@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PHPUnit">
+    <option name="directories">
+      <list>
+        <option value="$PROJECT_DIR$/tests/CodeGenerators" />
+        <option value="$PROJECT_DIR$/tests/EthStatic/Unit" />
+        <option value="$PROJECT_DIR$/tests/EthMainnet/Unit" />
+        <option value="$PROJECT_DIR$/tests/TestEthClient/Unit" />
+      </list>
+    </option>
+  </component>
+</project>
