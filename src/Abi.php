@@ -99,9 +99,7 @@ class Abi extends EthereumStatic
 
             /** @var EthD $class EthD or a derived class. */
             $class = EthD::getClassByAbi($param->type);
-
             $lengthType = $class::getdataLengthType($param->type);
-
             if ($lengthType === 'static') {
                 // Fixed length type.
                 $thisValue = substr($msgData, $pos, 64);
@@ -142,9 +140,9 @@ class Abi extends EthereumStatic
     {
         foreach ($this->abi as $item) {
             if (isset($item->name)
-              && isset($item->type)
-              && $item->type === 'function'
-              && $item->name === $methodName
+                && isset($item->type)
+                && $item->type === 'function'
+                && $item->name === $methodName
             ) {
                 return $item;
             }
@@ -152,6 +150,17 @@ class Abi extends EthereumStatic
         throw new \Exception('Called undefined contract method: ' . $methodName . '.');
     }
 
+    public function getParamDefinitionByHex(string $heyx)
+    {
+        foreach ($this->abi as $item) {
+            try {
+                if (@self::getSignature($item) == $heyx) {
+                    return $item;
+                }
+            } catch (\Exception $e) {}
+        }
+        throw new \Exception('Called undefined contract method hex: ' . $heyx . '.');
+    }
 
     /**
      * @param $m
@@ -161,6 +170,9 @@ class Abi extends EthereumStatic
      */
     private static function getSignature($m)
     {
+        if (empty($m->name)) {
+            throw new \Exception("Chybí name");
+        }
         $sign = $m->name . '(';
         foreach ($m->inputs as $i => $item) {
             $sign .= $item->type;
@@ -237,7 +249,7 @@ class Abi extends EthereumStatic
         $events = [];
         foreach ($this->abi as $item) {
             if (isset($item->type)
-              && $item->type === 'event'
+                && $item->type === 'event'
             ) {
                 $events[] = new Event($item);
             }
